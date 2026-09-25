@@ -17,7 +17,7 @@ filter_option = st.sidebar.selectbox("Оберіть потрібний ефек
                                                                     "Колірний сплеск"])
 
 if uploaded_file is not None:
-    image = Image.open(uploaded_file)
+    image = Image.open(uploaded_file).convert("RGB")
 
     img_array = np.array(image)
 
@@ -44,7 +44,7 @@ if uploaded_file is not None:
 
         gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
         gray = cv2.cvtColor(gray, cv2.COLOR_GRAY2RGB)
-        
+
         if chosen_color == "Червоний":
             low_red1 = np.array([0, 50, 50])
             high_red1 = np.array([10, 255, 255])
